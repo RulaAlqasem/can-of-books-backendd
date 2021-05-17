@@ -5,11 +5,18 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
+const getUser=require('./models/User')
 
 const app = express();
 app.use(cors());
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
+
+
+app.get('/books', getUser)
+
+
+
 
 app.get('/test', (request, response) => {
 
@@ -20,5 +27,4 @@ app.get('/test', (request, response) => {
   // STEP 3: to prove that everything is working correctly, send the opened jwt back to the front-end
 
 })
-
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

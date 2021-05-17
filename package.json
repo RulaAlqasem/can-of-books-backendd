@@ -1,5 +1,5 @@
 {
-  "name": "auth0TestBack",
+  "name": "auth0testback",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -15,6 +15,15 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "jwks-rsa": "^2.0.3"
-  }
+    "jwks-rsa": "^2.0.3",
+    "mongoose": "^5.12.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RulaAlqasem/can-of-books-backendd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RulaAlqasem/can-of-books-backendd/issues"
+  },
+  "homepage": "https://github.com/RulaAlqasem/can-of-books-backendd#readme"
 }
