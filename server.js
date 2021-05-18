@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-const mongoose = require('mongoose');
+
 const express = require('express');
 const cors = require('cors');
 // const jwt = require('jsonwebtoken');
@@ -12,6 +12,10 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+
+const mongoose = require('mongoose');
+
 
 
 
@@ -57,18 +61,18 @@ function createBook(req, res) {
   console.log(req.body);
   const { name,  description,status,email } = req.body;
 User.find({ email: email }, (error, ownerData) => {
-      ownerData[0].books.push({
+      ownerData[5].books.push({
           name: name,
           description: description,
           status:status,
           email:email
       })
-      ownerData[0].save();
-      res.send(ownerData[0].books);
+      ownerData[5].save();
+      res.send(ownerData[5].books);
   });
 }
 
-//bookCollection();
+bookCollection();
 
 function getUser(request, response)  {
   
@@ -77,7 +81,7 @@ function getUser(request, response)  {
   User.find({email: email }, function (err, user1) {
       if (err) response.send('didnt work');
     
-      response.send(user1[0].books);
+      response.send(user1[5].books);
   });
  
 
@@ -93,12 +97,12 @@ function deleteBooks(req, res) {
  User.find({email: email}, (err, ownerData) => {
       
 try {
-  const newBookArr = ownerData[0].books.filter((books, idx) => {
+  const newBookArr = ownerData[5].books.filter((books, idx) => {
     return idx !== index
 });
-ownerData[0].books = newBookArr;
-ownerData[0].save();
-res.send(ownerData[0].books);
+ownerData[5].books = newBookArr;
+ownerData[5].save();
+res.send(ownerData[5].books);
 } catch (error) {
   console.log(error);
 }
