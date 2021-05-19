@@ -111,10 +111,30 @@ if (err) {res.send(`YOU GOT AN ERROR! your error: ${err}`)};
      
   });
 }
+function updateBook(req, res) {
+ 
+  const index = Number(req.params.index);
+  
+  const { email, name, description, status } = req.body;
+
+
+ User.find({ email: email }, (err, ownerData) => {
+    
+      
+      ownerData[5].books.splice(index, 1, {
+          name: name,
+          description: description,
+          status:status
+      });
+      ownerData[5].save();
+      res.send(ownerData[5].books)
+  });
+}
+
 app.get('/books', getUser)
 app.post('/books', createBook);
 app.delete('/books/:index', deleteBooks);
-
+app.put('/books/:index', updateBook);
 app.get('/test', (request, response) => {
 
   // TODO: 
